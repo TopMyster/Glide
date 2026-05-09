@@ -2,7 +2,7 @@
   "name": "glide",
   "productName": "glide",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "The macOS touch bar for all computers, not just older Macs",
   "main": ".vite/build/main.js",
   "private": true,
   "scripts": {

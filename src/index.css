@@ -55,7 +55,7 @@ h1 {
   background-color: rgba(76, 75, 83, 0.769);
 }
 
-.key > div {
+.key div {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -65,4 +65,8 @@ h1 {
 
 .key:hover {
   background-color: rgba(100, 98, 109, 0.87);
+}
+
+.key:active {
+  box-shadow: inset 2px 2px 20px rgba(31, 31, 31, 0.678);
 }

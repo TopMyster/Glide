@@ -11,6 +11,7 @@ declare const MAIN_WINDOW_VITE_NAME: string;
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
+    title: 'Glide',
     width: 800,
     height: 50,
     skipTaskbar: true,
@@ -20,11 +21,12 @@ const createWindow = () => {
     minimizable: false,
     alwaysOnTop: true,
     transparent: true,
+    hasShadow: true,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
     },
   });
-  mainWindow.webContents.openDevTools();
+
   // and load the index.html of the app.
   if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
     mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);
