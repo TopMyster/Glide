@@ -1,4 +1,5 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
+import { setVolume, getVolume, setMute, getMute } from "easy-volume";
 import path from 'node:path';
 
 declare const MAIN_WINDOW_VITE_DEV_SERVER_URL: string;
@@ -11,9 +12,9 @@ const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 800,
-    height: 60,
+    height: 50,
+    skipTaskbar: true,
     frame: false,
-    titleBarStyle: 'hidden',
     resizable: false,
     maximizable: false,
     minimizable: false,
@@ -23,7 +24,7 @@ const createWindow = () => {
       preload: path.join(__dirname, 'preload.js'),
     },
   });
-
+  mainWindow.webContents.openDevTools();
   // and load the index.html of the app.
   if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
     mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);
@@ -34,6 +35,21 @@ const createWindow = () => {
   }
 
 };
+
+ipcMain.handle("increase-volume", async () => {
+  const vol = await getVolume();
+  await setVolume(Math.min(vol + 4, 100));
+});
+
+ipcMain.handle("decrease-volume", async () => {
+  const vol = await getVolume();
+  await setVolume(Math.max(vol - 4, 0));
+});
+
+ipcMain.handle("toggle-mute", async () => {
+  const muted = await getMute();
+  await setMute(!muted);
+});
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
