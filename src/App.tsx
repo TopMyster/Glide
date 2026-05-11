@@ -1,9 +1,12 @@
-import { Volume, Volume1, Volume2 } from 'lucide-react';
-
-
-//Volume Controls
+import { Volume, Volume1, Volume2, Smile } from 'lucide-react';
+import EmojiPicker from 'emoji-picker-react';
 
 function App() {
+
+  const togglePicker = () => {
+
+
+  }
   return (
     <div className='container'>
       <div className='bar'>
@@ -15,6 +18,9 @@ function App() {
         </button>
         <button className='key' onClick={() => window.volumeAPI.increaseVolume()}>
           <Volume2 />
+        </button>
+        <button className='key' onClick={() => togglePicker()}>
+          <Smile />
         </button>
       </div>
     </div>
