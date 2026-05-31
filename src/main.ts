@@ -12,8 +12,8 @@ const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     title: 'Glide',
-    width: 800,
-    height: 50,
+    width: 300,
+    height: 75,
     skipTaskbar: true,
     frame: false,
     resizable: false,

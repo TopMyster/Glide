@@ -9,6 +9,11 @@ function App() {
   }
   return (
     <div className='container'>
+      <div className='handle'>
+        <button className='window-icon'></button>
+        <button className='window-icon'></button>
+        <button className='window-icon'></button>
+      </div>
       <div className='bar'>
         <button className='key' onClick={() => window.volumeAPI.toggleMute()}>
           <Volume />
